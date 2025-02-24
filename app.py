@@ -26,4 +26,5 @@ def taglishtranslator():
         }), 200
 
 if __name__ == '__main__':
-    app.run(port=5000)
+    import uvicorn
+    uvicorn.run("app:app", host="0.0.0.0", port=5000, log_level="info")
