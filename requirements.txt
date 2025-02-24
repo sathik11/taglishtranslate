@@ -9,3 +9,6 @@ azure-core
 azure-identity
 azure-storage-blob
 openai
+flask
+flask-cors
+requests

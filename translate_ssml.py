@@ -6,16 +6,20 @@ from azure.ai.inference.models import SystemMessage, UserMessage
 import azure.cognitiveservices.speech as speechsdk
 from azure.storage.blob import BlobServiceClient
 import uuid
-
-
-endpoint = os.getenv("ENDPOINT_URL", "https://aiservices-eastus-demo.services.ai.azure.com/models")  
-deployment = os.getenv("DEPLOYMENT_NAME", "gpt-4o-20nov24")  
 from azure.ai.inference import ChatCompletionsClient
 from azure.core.credentials import AzureKeyCredential
+from dotenv import load_dotenv
+
+load_dotenv()
+endpoint = os.getenv("ENDPOINT_URL", "https://aiservices-eastus-demo.services.ai.azure.com/models")  
+deployment = os.getenv("DEPLOYMENT_NAME", "gpt-4o-20nov24")  
+aikey = os.getenv("AZURE_AI_ENDPOINT_KEY")
+
+# Load environment variables from a .env file
 
 client = ChatCompletionsClient(
     endpoint=endpoint,
-    credential=AzureKeyCredential(os.environ["AZUREAI_ENDPOINT_KEY"]),
+    credential=AzureKeyCredential(aikey),
 ) 
 
 SYSTEM_PROMPT = """
